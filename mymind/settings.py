@@ -143,3 +143,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_TIMEZONE = os.environ.get('CELERY_TIMEZONE')
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6379/1'
+CELERY_BEAT_SCHEDULE = {
+    'run-hello-world-every-minute': {
+        'task': 'crm.tasks.hello_world',
+        'schedule': 5.0,
+    },
+}

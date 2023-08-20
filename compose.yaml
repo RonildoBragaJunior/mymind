@@ -57,6 +57,16 @@ services:
     command: celery -A mymind worker --loglevel=info
     networks:
       - internal-net
+      
+  celery-beat:
+    image: mymind
+    depends_on:
+      - redis
+    volumes:
+      - .:/mymind
+    command: celery -A mymind beat --loglevel=info
+    networks:
+      - internal-net
 
 networks:
   external-net:
